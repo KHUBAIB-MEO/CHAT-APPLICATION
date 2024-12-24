@@ -1,4 +1,3 @@
-import 'package:chat_application/auth/auth_services.dart';
 import 'package:chat_application/controllers/login_controller.dart';
 import 'package:chat_application/widgets/input_textfeild.dart';
 import 'package:chat_application/widgets/submit_button.dart';
@@ -8,7 +7,6 @@ import 'package:get/get.dart';
 class LoginView extends StatelessWidget {
   LoginView({super.key});
   final LoginController loginController = Get.put(LoginController());
-  final AuthServices _authServices = Get.put(AuthServices());
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +43,7 @@ class LoginView extends StatelessWidget {
               InputTextfeild(
                 hintText: "E m a i l",
                 controller: loginController.emailController,
+                obscureText: false,
               ),
 
               const SizedBox(
@@ -55,6 +54,7 @@ class LoginView extends StatelessWidget {
               InputTextfeild(
                 hintText: "P a s s w o r d",
                 controller: loginController.passController,
+                obscureText: true,
               ),
 
               const SizedBox(

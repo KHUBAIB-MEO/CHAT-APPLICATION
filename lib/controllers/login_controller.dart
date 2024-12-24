@@ -13,7 +13,13 @@ class LoginController extends GetxController {
       {required String email,
       required String pass,
       required BuildContext context}) {
-    _authServices.login(email, pass, context);
+    if (!RegExp(r"^[^@\s]+@[^@\s]+\.[^@\s]+$").hasMatch(email)) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Please enter a valid email address')),
+      );
+    } else {
+      _authServices.login(email, pass, context);
+    }
   }
 
   void navigateToSignUp() {

@@ -7,7 +7,6 @@ import 'package:get/get.dart';
 class SignUpView extends StatelessWidget {
   SignUpView({super.key});
   final SignUpController signUpController = Get.put(SignUpController());
-  //final AuthServices _authServices = Get.put(AuthServices());
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +43,7 @@ class SignUpView extends StatelessWidget {
               InputTextfeild(
                 hintText: "E m a i l",
                 controller: signUpController.emailController,
+                obscureText: false,
               ),
 
               const SizedBox(
@@ -54,6 +54,7 @@ class SignUpView extends StatelessWidget {
               InputTextfeild(
                 hintText: "P a s s w o r d",
                 controller: signUpController.passController,
+                obscureText: true,
               ),
 
               const SizedBox(
@@ -64,6 +65,7 @@ class SignUpView extends StatelessWidget {
               InputTextfeild(
                 hintText: "C o n f i r m  P a s s w o r d",
                 controller: signUpController.confirmPassController,
+                obscureText: true,
               ),
 
               const SizedBox(

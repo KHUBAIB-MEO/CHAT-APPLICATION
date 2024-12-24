@@ -1,3 +1,4 @@
+import 'package:chat_application/views/home_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -5,6 +6,7 @@ import 'package:get/get.dart';
 class AuthServices extends GetxController {
   //instance of FirebaseAuth
   final FirebaseAuth _auth = FirebaseAuth.instance;
+  //final SignUpController signUpController = Get.put(SignUpController());
 
   //method to log in user
   void login(String email, String pass, BuildContext context) async {
@@ -19,6 +21,9 @@ class AuthServices extends GetxController {
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text('LOGIN SUCCESSFULL')),
       );
+
+      //navigate to home page
+      Get.to(() => HomeView());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         // ignore: use_build_context_synchronously
@@ -56,6 +61,13 @@ class AuthServices extends GetxController {
         email: email,
         password: pass,
       );
+      // ignore: use_build_context_synchronously
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Account Created Successfully')),
+      );
+
+      //navigate to login page
+      //signUpController.navigateToLogin();
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         // ignore: use_build_context_synchronously
@@ -86,5 +98,9 @@ class AuthServices extends GetxController {
       }
     }
   }
+
   //method to sign out user
+  void signOut() async {
+    await _auth.signOut();
+  }
 }
