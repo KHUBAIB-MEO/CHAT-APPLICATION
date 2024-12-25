@@ -1,43 +1,14 @@
-import 'package:chat_application/auth/auth_services.dart';
+import 'package:chat_application/widgets/my_drawer.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class HomeView extends StatelessWidget {
-  HomeView({super.key});
+  const HomeView({super.key});
 
-  final AuthServices _authServices = Get.put(AuthServices());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         backgroundColor: Theme.of(context).colorScheme.surface,
-        drawer: Drawer(
-          backgroundColor: Theme.of(context).colorScheme.surface,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              const SizedBox(
-                height: 50,
-              ),
-              GestureDetector(
-                onTap: () => _authServices.signOut(),
-                child: Row(
-                  children: [
-                    Icon(
-                      Icons.logout,
-                      size: 40,
-                      color: Theme.of(context).colorScheme.primary,
-                    ),
-                    Text("    L o g o u t",
-                        style: TextStyle(
-                            color: Theme.of(context).colorScheme.primary,
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold)),
-                  ],
-                ),
-              ),
-            ],
-          ),
-        ),
+        drawer: MyDrawer(),
         appBar: AppBar(
           title: Text("Chat App",
               style: TextStyle(color: Theme.of(context).colorScheme.primary)),
@@ -84,7 +55,7 @@ class HomeView extends StatelessWidget {
                 //       subtitle: Text("H i"),
                 //     );
                 //   },
-                // ),
+                // ),`
               ),
             ),
             Expanded(

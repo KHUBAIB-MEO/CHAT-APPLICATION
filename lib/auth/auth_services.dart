@@ -1,4 +1,5 @@
 import 'package:chat_application/views/home_view.dart';
+import 'package:chat_application/views/login_view.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -23,7 +24,7 @@ class AuthServices extends GetxController {
       );
 
       //navigate to home page
-      Get.to(() => HomeView());
+      Get.offAll(() => HomeView());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         // ignore: use_build_context_synchronously
@@ -67,7 +68,7 @@ class AuthServices extends GetxController {
       );
 
       //navigate to login page
-      //signUpController.navigateToLogin();
+      Get.offAll(() => LoginView());
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
         // ignore: use_build_context_synchronously
